@@ -1,0 +1,127 @@
+1-Dockerize node application
+2-Publish/ push node app to docker hub
+  a-create account
+  b-create repo
+  c-tag and push
+
+resource-
+https://www.youtube.com/watch?v=CsWoMpK3EtE
+
+
+//check docker 
+docker --version
+
+//update system
+sudo apt-get update
+
+//first download dependency
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+
+//Add docker's GPG Key
+//The GPG key is a security feature.
+
+//To ensure that the software you’re installing is authentic
+ 
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+
+//Install Docker Repository
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs)  stable"
+
+
+//update the repos you just added
+sudo apt-get update
+
+//install latest docker community edition
+sudo apt-get install docker-ce
+
+//check status
+server docker status
+
+//starting docker
+server docker start 
+
+//not to use sudo again and again for docker
+sudo usermod -a -G docker ubuntu(username)
+
+exit and restart 
+
+//check if every thing is up or not
+docker info
+
+//build docker image
+docker build -t docker-sample-project(yourproject/ImageId) .( directory of project folder/here it is current so ".")
+
+
+//run docker 
+docker run -p 8000:8000 imageId/Project
+
+//Push to Docker hub/ or any cloud (can push aws ECR Private repos)
+docker login # You'll need a Docker Hub account
+docker tag ec2-app <YOUR_DOCKER_USERNAME>/ec2-app
+docker push <YOUR_DOCKER_USERNAME>/ec2-app
+
+//Run docker on ec2 instace
+//Pull docker image and run on ec2
+docker pull <YOUR_DOCKER_USERNAME>/ec2-app
+docker run -p 8000:8000 <YOUR_DOCKER_USERNAME>/project-name(ImageId)
+
+//Deleting an Image and clean up
+
+docker images
+docker rmi <CONTAINER ID>
+
+//force remove
+docker rmi -f  <CONTAINER ID>
+
+
+
+//Listing containers 
+docker ps
+docker container ls
+
+//stop container
+docker stop <ContainerID)
+//remove container
+docker rm -f container id
+
+ex-
+docker run -d -p 8008:8008 rahul1601/purchase-docker
+
+
+docker-compose
+---------------
+create a docker-compose file 
+//docker-compose.yml
+
+1-run and build
+docker-compose up
+2-run in background
+docker-compose up -d
+
+ docker-compose ps
+
+3-stop docker compose
+ docker-compose stop
+
+4-remove everything 
+docker-compose down
+
+
+5-Restart a single service
+docker-compose restart player
+
+6-Stop a single service
+docker-compose stop  player
+
+
+ 
+
+
+
+
+
+
+ 
+
+

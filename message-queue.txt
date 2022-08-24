@@ -1,0 +1,69 @@
+Message Queue-
+----------------
+
+2 models of message queue
+1- producer consumer
+2- publish subscriber
+
+Synchronous - call (immediate response)
+Asynchronous- email, text msg (dont expect the response immediately)
+
+Uses-
+-----
+Used in Asynchronous programming call.
+Used to make communication between different components/services
+
+Ex bank queue - if people will increase windows will increase
+Windows      People = 15
+
+W1           --- some people
+
+W2           --- some people
+ 
+
+W3           --- some people
+
+People will be served in little bit of delayed by standing on queue
+or getting some token of their calling time and the bank can handle
+more people without getting overwhelmed.
+
+Sameway Server can handle more request by putting the requesting message in a queue
+
+A queue could be a process which has a data structure and memory to store
+the messages
+
+It could be the a component in the same machine or remote machine
+
+ex- AWS SQS, Kafka, RabbitMQ  - Dedicated queue architechture for complex and
+scalable applications
+
+Message - A small data need to be processed
+Producer - will put a msg on the queue
+Consumer - pick up the msg and do the processing
+
+Producer can keeping the message into queue - handle more requests
+If requests are more we can increase the consumers like windows in bank
+If consumers are not working for any reasoning msgs will be still in the queue
+Until the message is not consumed by the consumer it will be in the queue
+One consumer can consume one message at a time and after consuming that msg will be deleted
+from queue.
+In pub sub pattern can a group of consumers can consume the message
+
+Ex- technical 
+Producer  ---------- Consumer 
+          1|2|3|4|5
+Propducer ---------- Consumer
+
+           Queue
+
+1/2/3/4/5 - these are the data/message/payload added to queue to consume later.
+
+
+
+
+
+
+
+
+
+
